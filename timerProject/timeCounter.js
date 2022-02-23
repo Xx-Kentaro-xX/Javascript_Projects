@@ -2,11 +2,11 @@ function entireTimerFunction() {
   try {
     let min = 0;
     let sec = 0;
-    let timeArea = document.querySelector(".timeArea");
+    let timeArea = document.getElementById("timeArea");
 
     let intervalID = setInterval(timeCountFunction, 1000);
     // 第二引数ミリ秒後にカウント停止用ファンクションを呼び出して、タイマーを停止させる
-    setTimeout(stopTimer, 60000);
+    setTimeout(stopTimer, 6000);
 
     // 時間をカウントするファンクション
     function timeCountFunction() {
@@ -39,6 +39,11 @@ function entireTimerFunction() {
     // カウント停止用ファンクション
     function stopTimer() {
       clearInterval(intervalID);
+      var clickTarget = document.getElementById("timeArea");
+      // タイマー開始ボタンを入れたら以下のクリック処理をコメントアウトする(2022/2/23)
+      clickTarget.click();
+      var finishSound = new Audio("Recover.wav");
+      finishSound.play();
     }
   } catch (e) {
     console.log("Somehow error happened on entireTimerFunction!");
